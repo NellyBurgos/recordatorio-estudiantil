@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1976d2">
+  <meta charset="UTF-8">
+  <title>Recordatorio Estudiantil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1565c0;
+    }
+    ul {
+      margin-top: 20px;
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: white;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-left: 5px solid #1976d2;
+      display: flex;
+      justify-content: space-between;
+    }
+    .delete-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+    }
+    .clear-btn {
+      background: #b71c1c;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+    .clear-btn:hover {
+      background: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 Recordatorio Estudiantil</h1>
+  <form id="form-evento" autocomplete="off">
+    <label for="materia">Seleccioná una materia:</label>
+    <select id="materia" required>
+      <option value="">-- Seleccioná una materia --</option>
+      <option value="Matemática">Matemática</option>
+      <option value="Organización Empresarial">Organización Empresarial</option>
+      <option value="Programación">Programación</option>
+      <option value="Sistemas Operativos">Sistemas Operativos</option>
+    </select>
+
+    <label for="tipo">Tipo de evento:</label>
+    <select id="tipo" required>
+      <option value="">-- Seleccioná un tipo --</option>
+      <option value="Autoevaluación">Autoevaluación</option>
+      <option value="1er Parcial">1er Parcial</option>
+      <option value="2do Parcial">2do Parcial</option>
+      <option value="Recuperatorio Parcial">Recuperatorio Parcial</option>
+      <option value="Examen Final">Examen Final</option>
+    </select>
+
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" required>
+
+    <button type="submit">Agregar evento</button>
+  </form>
+
+  <button type="button" id="limpiar-eventos" class="clear-btn">Limpiar todos los eventos</button>
+
+  <ul id="lista-eventos"></ul>
+
+  <script>
+    const lista = document.getElementById('lista-eventos');
+    const form = document.getElementById('form-evento');
+    const btnLimpiar = document.getElementById('limpiar-eventos');
+
+    function cargarEventos() {
+      lista.innerHTML = '';
+      const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+      eventos.forEach((evento, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${evento.tipo} de <strong>${evento.materia}</strong> - ${evento.fecha}
+          <button class="delete-btn" data-index="${index}">X</button>
+        `;
+        lista.appendChild(li);
+      });
+      // Asignar eventos a los botones de borrar
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          eliminarEvento(this.getAttribute('data-index'));
+        });
+      });
+    }
+
+    function agregarEvento(e) {
+      e.preventDefault();
+      const materia = document.getElementById('materia').value;
+      const tipo = document.getElementById('tipo').value;
+      const fecha = document.getElementById('fecha').value;
+
+      if (!materia || !tipo || !fecha) {
+        alert('Por favor completá todos los campos.');
+        return;
+      }
+
+      const nuevoEvento = { materia, tipo, fecha };
+      const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+      eventos.push(nuevoEvento);
+      localStorage.setItem('eventos', JSON.stringify(eventos));
+      cargarEventos();
+
+      form.reset();
+    }
+
+    function eliminarEvento(index) {
+      const eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+      eventos.splice(index, 1);
+      localStorage.setItem('eventos', JSON.stringify(eventos));
+      cargarEventos();
+    }
+
+    btnLimpiar.addEventListener('click', function() {
+      if (confirm('¿Seguro que deseas borrar todos los eventos?')) {
+        localStorage.removeItem('eventos');
+        cargarEventos();
+      }
+    });
+
+    form.addEventListener('submit', agregarEvento);
+
+    // Cargar al inicio
+    cargarEventos();
+  </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('✅ Service Worker registrado'))
+      .catch(err => console.error('❌ Error:', err));
+  }
+</script>
+</body>
+</html>
