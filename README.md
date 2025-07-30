@@ -9,5 +9,9 @@ Este proyecto es una aplicación web que permite a estudiantes registrar y visua
 
 ## 👩‍💻 Desarrollado por
 Nelly · 2025
-## 🔗 Enlace al repositorio
+
+## 🔗 Enlaces del proyecto
+
+- 📂 [Ver repositorio en GitHub](https://github.com/NellyBurgos/recordatorio-estudiantil.git)
+- 🌐 [Ver proyecto online](https://recordatorio-estudiantil.netlify.app)
 
