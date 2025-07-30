@@ -1,0 +1,189 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #1a1919;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+:root {
+  --fondo: #f5eeee;
+  --texto: #1f1d1d;
+  --evento-bg: #818584; /* Celeste suave para las cajitas de evento */
+  --borde: #dad6d9;
+}
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+body.oscuro {
+  --fondo: #121212;
+  --texto: #f7ebeb;
+  --evento-bg: #1e1e1e;
+  --borde: #bb86fc;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  color: #2a9177;
+  font-size: 1.5em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #616061;
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+#agregar-materia {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 6px;
+  font-size: 1.2em;
+  border: 1.5px solid #131212;
+  background-color: #666265;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 0;
+  width: auto;
+}
+
+#agregar-materia:hover {
+  background-color: #494648;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background-color: #522648;
+  color: rgb(248, 243, 248);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #8d8a8c;
+}
+
+ul {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: var(--evento-bg);
+  padding: 10px;
+  margin-bottom: 8px;
+  border-left: 5px solid var(--borde);
+  display: flex;
+  justify-content: space-between;
+}
+
+li.agregado {
+  animation: aparecer 0.4s ease;
+}
+
+.delete-btn {
+  background: rgb(78, 78, 78);
+  color: rgb(247, 245, 245);
+  border: none;
+  padding: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.clear-btn {
+  background: rgb(112, 114, 113);
+  color: rgb(71, 70, 71);
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background: #c2bfc1;
+}
+
+/* Agrupa y alinea la información del evento dentro de cada li */
+.evento-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 2px;
+}
+
+.evento-info span {
+  font-size: 15px;
+  color: #ebe6e6;
+}
+
+/* Para pantallas más anchas, muestra los datos en fila */
+@media (min-width: 480px) {
+  .evento-info {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .evento-info span {
+    min-width: 120px;
+    text-align: left;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.info-inscripcion {
+  text-align: center;
+  color: #717272;
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
