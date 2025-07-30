@@ -12,6 +12,6 @@ Nelly · 2025
 
 ## 🔗 Enlaces del proyecto
 
-- 📂 [Ver repositorio en GitHub](https://github.com/NellyBurgos/recordatorio-estudiantil.git)
+- 📂 [Ver repositorio en GitHub](http://github.com/NellyBurgos)
 - 🌐 [Ver proyecto online](https://recordatorio-estudiantil.netlify.app)
 
