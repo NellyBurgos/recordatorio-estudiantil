@@ -14,4 +14,5 @@ Nelly · 2025
 
 - 📂 [Ver repositorio en GitHub](http://github.com/NellyBurgos)
 - 🌐 [Ver proyecto online](https://recordatorio-estudiantil.netlify.app)
+- 🗂 [Ver portafolio completo](https://portafolio-nelly.netlify.app/)
 
