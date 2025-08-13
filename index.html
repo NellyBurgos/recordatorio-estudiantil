@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1976d2">
+    <meta charset="UTF-8">
+    <title>Recordatorio Estudiantil</title>
+    
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1 class="tituloPrincipal">📖 Recordatorio Estudiantil</h1>
+  <h2 class="subtituloPrincipal">🗓️ Tu asistente personal para no olvidar ninguna fecha importante.</h2>
+<p class="info-inscripcion">🧠💆‍♀ Recordá todo, estresate menos.</p>
+  <button id="toggle-tema">🌘 Cambiar tema</button>
+  <form id="form-evento" autocomplete="off">
+    <label for="materia">Seleccioná una materia:</label>
+    <select id="materia" required>
+      <option value="">-- Seleccioná una materia --</option>
+      <option value="Probabilidad y Estadística">Probabilidad y Estadística</option>
+      <option value="Ingles I">Ingles I</option>
+      <option value="Programación II">Programación II</option>
+      <option value="Base de Datos I">Base de Datos I</option>
+    </select>
+    <div style="display: flex; gap: 8px; margin: 8px 0;">
+      <input type="text" id="nueva-materia" placeholder="Agregar nueva materia">
+      <button type="button" id="agregar-materia">+</button>
+    </div>
+
+    <label for="tipo">Tipo de evento:</label>
+    <select id="tipo" required>
+      <option value="">-- Seleccioná tipo --</option>
+      <option value="Tarea">Tarea</option>
+      <option value="Exposición">Exposición</option>
+      <option value="Trabajo Práctico">Trabajo Práctico</option>
+      <option value="Autoevaluación">Autoevaluación</option>
+    
+      <option value="1er Parcial">1er Parcial</option>
+      <option value="2do Parcial">2do Parcial</option>
+      <option value="Recuperatorio 1er Parcial">Recuperatorio 1er Parcial</option>
+      <option value="Recuperatorio 2do Parcial">Recuperatorio 2do Parcial</option>
+      <option value="Examen Final"> Examen Final</option>
+
+    </select>
+    <small>Puedes seleccionar hasta dos tipos (Ctrl+Click o Shift+Click)</small>
+
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" required>
+    <label for="hora">Hora:</label>
+
+  
+    <input type="time" id="hora" required>
+
+    <button class="botonAgregarEvento" type="submit">Agregar evento</button>
+  </form>
+
+  <button type="button" id="limpiar-eventos" class="clear-btn">Limpiar todos los eventos</button>
+
+  <ul id="lista-eventos"></ul>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker registrado'))
+        .catch(err => console.error(' Error:', err));
+    }
+  </script>
+</body>
+</html>
