@@ -13,6 +13,6 @@ Nelly · 2025
 ## 🔗 Enlaces del proyecto
 
 - 📂 [Ver repositorio en GitHub](http://github.com/NellyBurgos)
-- 🌐 [Ver proyecto online](https://recordatorio-estudiantil.netlify.app)
+- 🌐 [Ver proyecto online](https://nellyburgos.github.io/recordatorio-estudiantil/)
 - 🗂 [Ver portafolio completo](https://portafolio-nelly.netlify.app/)
 
