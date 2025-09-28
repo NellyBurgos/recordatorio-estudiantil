@@ -2,12 +2,12 @@
 
 Este proyecto es una aplicación web que permite a estudiantes registrar y visualizar fechas importantes como parciales, exámenes y entregas.
 
-## 🛠 Tecnologías usadas
-- HTML
+## 🛠 Tecnologías 
+[HTML]https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
 - CSS
 - JavaScript
 
-## 👩‍💻 Desarrollado por
+## 👩‍💻 Desarrollada por
 Nelly · 2025
 
 ## 🔗 Enlaces del proyecto
